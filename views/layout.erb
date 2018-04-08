@@ -38,10 +38,13 @@
                 </div>
                 </nav>
 			<div>
-				<%if @error then %>
-						<div class="alert alert-error"><%=@error%></div>
-				<% end %>
-				<%= yield %>
+
+			      <%if @message && @message.length > 0 then %>
+                      <br>
+			          <div class="alert alert-<%=@type%>"><%=@message%></div>
+			      <% end %>
+			      <%= yield %>
+
 			</div>
 		</div>
   </body>
