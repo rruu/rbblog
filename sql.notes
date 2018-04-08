@@ -1,0 +1,83 @@
+--------
+SQLite3
+
+CREATE TABLE IF NOT EXISTS Users(
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    name varchar NOT NULL,
+    datestamp varchar NOT NULL,
+    phone varchar NOT NULL,
+    email varchar NOT NULL,
+    barber varchar NOT NULL
+);
+
+CREATE TABLE IF NOT EXISTS Contacts(
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    email varchar NOT NULL,
+    Message varchar NOT NULL
+);
+
+
+CREATE TABLE IF NOT EXISTS Barbers(
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    name varchar NOT NULL,
+    Message varchar NOT NULL
+);
+
+
+
+INSERT INTO Users(name,phone,datestamp,barber) values ("Сергей", "79004120000", "2019-12-02", "Walter White");
+INSERT INTO Users(name,phone,datestamp,barber) values ("Виктор", "7903410000", "2019-12-03", "Gus Fring");
+INSERT INTO Users(name,phone,datestamp,barber) values ("Николай", "7900123000", "2019-12-11", "Gus Fring");
+INSERT INTO Users(name,phone,datestamp,barber) values ("Валерий", "7900333000", "2019-12-12", "Jessie Pincman");
+INSERT INTO Users(name,phone,datestamp,barber) values ("Семен", "790002000000", "2019-12-14", "Walter White");
+INSERT INTO Users(name,phone,datestamp,barber) values ("Гарик", "79000100000", "2019-12-15", "Jessie Pincman");
+
+
+INSERT INTO Contacts(email,message) values ("bill@microsoft.com", "Fuck u Linus!");
+INSERT INTO Contacts(email,message) values ("linus@linux.com", "Fuck u Billy ;)");
+INSERT INTO Contacts(email,message) values ("sugar@facebook.com", "Shut up, Please!");
+
+
+--------
+PostgrSQL
+
+CREATE TABLE IF NOT EXISTS users (
+    id  SERIAL PRIMARY KEY,
+    name varchar NOT NULL,
+    phone varchar NOT NULL,
+    datestamp varchar NOT NULL,
+    barber varchar NOT NULL
+
+);
+
+CREATE TABLE IF NOT EXISTS contacts (
+    id  SERIAL PRIMARY KEY,
+    email varchar NOT NULL,
+    Message varchar NOT NULL
+);
+
+
+INSERT INTO users(name,phone,datestamp,barber) values ('Сергей', '79004120000', '2019-12-02', 'Walter White');
+INSERT INTO users(name,phone,datestamp,barber) values ('Виктор', '7903410000', '2019-12-03', 'Gus Fring');
+INSERT INTO users(name,phone,datestamp,barber) values ('Николай', '7900123000', '2019-12-11', 'Gus Fring');
+INSERT INTO users(name,phone,datestamp,barber) values ('Валерий', '7900333000', '2019-12-12', 'Jessie Pincman');
+INSERT INTO users(name,phone,datestamp,barber) values ('Семен', '790002000000', '2019-12-14', 'Walter White');
+INSERT INTO users(name,phone,datestamp,barber) values ('Гарик', '79000100000', '2019-12-15', 'Jessie Pincman');
+
+
+INSERT INTO contacts(email,message) values ('bill@microsoft.com', 'Fuck u Linus!');
+INSERT INTO contacts(email,message) values ('linus@linux.com', 'Fuck u Billy');
+INSERT INTO contacts(email,message) values ('sugar@facebook.com', 'Shut up, Please!');
+
+
+--------
+Multiple Ruby Versions via RVM on Centos7
+
+https://www.theshell.guru/install-ruby-2-4-centos-7-3/
+
+
+--------
+SQLinjection disallow
+
+(!FALSE) db.execute ('insert into users (name,phone,datestamp,barber) values ( #{name}, #{phone}....)' )
+(!TRUE)  db.execute ( "insert into users (name,phone,datestamp,barber) values (?, ?)", [name,phone,datestamp,barber])
